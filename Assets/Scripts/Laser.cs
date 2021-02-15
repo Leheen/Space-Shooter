@@ -26,7 +26,7 @@ public class Laser : MonoBehaviour
 
         if (transform.position.y >= 8f)
         {
-            if (transform.parent != null)
+            if (transform.parent != null && transform.parent.tag == "TripleShot")
             {
                 Destroy(transform.parent.gameObject);
             }

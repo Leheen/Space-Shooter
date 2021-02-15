@@ -161,11 +161,11 @@ public class Player : MonoBehaviour
 
         if (_isTripleShotActive)
         {
-            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity, gameObject.transform);
         }
         else
         {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.0f, 0), Quaternion.identity);
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.0f, 0), Quaternion.identity, gameObject.transform);
         }
 
         _audioSource.Play();
@@ -196,6 +196,7 @@ public class Player : MonoBehaviour
         if (_lives < 1)
         {
             _spawnManager.OnPlayerDeath();
+            _uiManager.CheckBestScore(_score);
             Destroy(this.gameObject);
         }
     }
