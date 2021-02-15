@@ -70,13 +70,10 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "Laser")
         {
-            if (other.transform.parent)
+            Player player = other.transform.GetComponentInParent<Player>();
+            if (player != null)
             {
-                Player player = other.transform.GetComponent<Player>();
-                if (player != null)
-                {
-                    player.AddScore(10);
-                }
+                player.AddScore(10);
             }
 
             Destroy(other.gameObject);
